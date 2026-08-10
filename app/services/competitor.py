@@ -1,8 +1,10 @@
 import os
+import json
 from dotenv import load_dotenv
 from google import genai
 
 from app.prompts.competitor import competitor_prompt
+from app.models.competitor import CompetitorResponse
 
 # Load environment variables
 load_dotenv()
@@ -25,13 +27,14 @@ def analyze_competitor(company, industry, country):
     # Send prompt to Gemini
     response = client.models.generate_content(
         model=MODEL_NAME,
-        contents=prompt
+        contents=prompt,
+        config={
+            "response_mime_type": "application/json",
+            "response_schema": CompetitorResponse,
+        }
     )
 
     # Return AI response
-    return {
-    "company": company,
-    "industry": industry,
-    "country": country,
-    "analysis": response.text
-}
+
+    result = json.loads(response.text)
+    return result
