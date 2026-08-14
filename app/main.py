@@ -1,5 +1,9 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 from app.api.competitor import router as competitor_router
+
 
 app = FastAPI(
     title="AI Marketing Platform",
@@ -7,11 +11,17 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Register Competitor API
+
+# Register API routes
+
 app.include_router(competitor_router)
+
+
+# Serve frontend files
+
+app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+
 
 @app.get("/")
 def root():
-    return {
-        "message": "AI Marketing Platform is running!"
-    }
+    return FileResponse("frontend/index.html")
