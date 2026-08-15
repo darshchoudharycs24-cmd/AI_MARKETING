@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
 from app.api.competitor import router as competitor_router
+from app.api.post import router as post_router
 
 
 app = FastAPI(
@@ -15,11 +16,25 @@ app = FastAPI(
 # Register API routes
 
 app.include_router(competitor_router)
+app.include_router(post_router)
 
 
 # Serve frontend files
 
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+app.mount(
+    "/frontend",
+    StaticFiles(directory="frontend"),
+    name="frontend"
+)
+
+
+# Serve generated post images
+
+app.mount(
+    "/generated-images",
+    StaticFiles(directory="frontend/generated_images"),
+    name="generated-images"
+)
 
 
 @app.get("/")

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,157 +12,381 @@
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <!-- Header -->
-        <header>
-            <div class="logo">
-                <span>✦</span>
-                AI Marketing
-            </div>
-
-            <p>AI-powered competitor & marketing research</p>
-        </header>
-
-
-        <!-- Input Card -->
-        <section class="card">
-
-            <h1>Competitor Research</h1>
-
-            <p class="subtitle">
-                Enter a company and let AI analyze its competitive landscape.
-            </p>
-
-            <div class="form-grid">
-
-                <div class="input-group">
-                    <label for="company">Company Name</label>
-                    <input
-                        type="text"
-                        id="company"
-                        placeholder="e.g. Notion"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label for="industry">Industry</label>
-                    <input
-                        type="text"
-                        id="industry"
-                        placeholder="e.g. Productivity Software"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label for="country">Country</label>
-                    <input
-                        type="text"
-                        id="country"
-                        placeholder="e.g. Global"
-                    >
-                </div>
-
-            </div>
-
-            <button id="analyzeBtn" onclick="analyzeCompetitor()">
-                <span id="buttonText">Analyze Competitors</span>
-            </button>
-
-        </section>
-
-
-        <!-- Loading -->
-        <div id="loading" class="loading hidden">
-            <div class="spinner"></div>
-            <p>AI is analyzing the competitive landscape...</p>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <span>✦</span>
+            AI Marketing
         </div>
 
+        <p>AI-powered competitor research & content creation</p>
+    </header>
 
-        <!-- Error -->
-        <div id="error" class="error hidden"></div>
 
+    <!-- ========================= -->
+    <!-- COMPETITOR RESEARCH -->
+    <!-- ========================= -->
 
-        <!-- Results -->
-        <section id="results" class="results hidden">
+    <section class="card">
 
-            <div class="result-header">
-                <div>
-                    <p class="result-label">ANALYSIS FOR</p>
-                    <h2 id="resultCompany"></h2>
-                </div>
+        <h1>Competitor Research</h1>
 
-                <div class="badge" id="resultIndustry"></div>
+        <p class="subtitle">
+            Enter a company and let AI analyze its competitive landscape.
+        </p>
+
+        <div class="form-grid">
+
+            <div class="input-group">
+                <label for="company">Company Name</label>
+
+                <input
+                    type="text"
+                    id="company"
+                    placeholder="e.g. Notion"
+                >
             </div>
 
+            <div class="input-group">
+                <label for="industry">Industry</label>
 
-            <!-- Competitors -->
-            <div class="result-section">
-
-                <h3>Top Competitors</h3>
-
-                <div id="competitors" class="competitors-grid"></div>
-
+                <input
+                    type="text"
+                    id="industry"
+                    placeholder="e.g. Productivity Software"
+                >
             </div>
 
+            <div class="input-group">
+                <label for="country">Country</label>
 
-            <!-- Marketing Strategy -->
-            <div class="result-section">
-
-                <h3>Marketing Strategy</h3>
-
-                <div class="strategy-grid">
-
-                    <div class="strategy-card">
-                        <h4>Strengths</h4>
-                        <ul id="strengths"></ul>
-                    </div>
-
-                    <div class="strategy-card">
-                        <h4>Weaknesses</h4>
-                        <ul id="weaknesses"></ul>
-                    </div>
-
-                    <div class="strategy-card">
-                        <h4>Opportunities</h4>
-                        <ul id="opportunities"></ul>
-                    </div>
-
-                    <div class="strategy-card">
-                        <h4>Content Gaps</h4>
-                        <ul id="contentGaps"></ul>
-                    </div>
-
-                </div>
-
+                <input
+                    type="text"
+                    id="country"
+                    placeholder="e.g. Global"
+                >
             </div>
 
+        </div>
 
-            <!-- Suggestions -->
-            <div class="result-section">
+        <button id="analyzeBtn" onclick="analyzeCompetitor()">
+            <span id="buttonText">Analyze Competitors</span>
+        </button>
 
-                <h3>Strategic Suggestions</h3>
-
-                <div id="suggestions" class="suggestions"></div>
-
-            </div>
+    </section>
 
 
-            <!-- Summary -->
-            <div class="summary">
+    <!-- COMPETITOR LOADING -->
 
-                <h3>AI Summary</h3>
+    <div id="loading" class="loading hidden">
 
-                <p id="summaryText"></p>
+        <div class="spinner"></div>
 
-            </div>
-
-        </section>
+        <p>AI is analyzing the competitive landscape...</p>
 
     </div>
 
 
-    <script src="/frontend/script.js"></script>
+    <!-- COMPETITOR ERROR -->
+
+    <div id="error" class="error hidden"></div>
+
+
+    <!-- ========================= -->
+    <!-- COMPETITOR RESULTS -->
+    <!-- ========================= -->
+
+    <section id="results" class="results hidden">
+
+        <div class="result-header">
+
+            <div>
+                <p class="result-label">ANALYSIS FOR</p>
+
+                <h2 id="resultCompany"></h2>
+            </div>
+
+            <div
+                class="badge"
+                id="resultIndustry">
+            </div>
+
+        </div>
+
+
+        <!-- COMPETITORS -->
+
+        <div class="result-section">
+
+            <h3>Top Competitors</h3>
+
+            <div
+                id="competitors"
+                class="competitors-grid">
+            </div>
+
+        </div>
+
+
+        <!-- MARKETING STRATEGY -->
+
+        <div class="result-section">
+
+            <h3>Marketing Strategy</h3>
+
+            <div class="strategy-grid">
+
+                <div class="strategy-card">
+                    <h4>Strengths</h4>
+                    <ul id="strengths"></ul>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>Weaknesses</h4>
+                    <ul id="weaknesses"></ul>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>Opportunities</h4>
+                    <ul id="opportunities"></ul>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>Content Gaps</h4>
+                    <ul id="contentGaps"></ul>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUGGESTIONS -->
+
+        <div class="result-section">
+
+            <h3>Strategic Suggestions</h3>
+
+            <div
+                id="suggestions"
+                class="suggestions">
+            </div>
+
+        </div>
+
+
+        <!-- SUMMARY -->
+
+        <div class="summary">
+
+            <h3>AI Summary</h3>
+
+            <p id="summaryText"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- POST CREATOR -->
+    <!-- ========================= -->
+
+    <section class="card post-card">
+
+        <div class="section-badge">
+            TASK 1
+        </div>
+
+        <h1>Create Social Media Post</h1>
+
+        <p class="subtitle">
+            Generate a ready-to-publish marketing post with an
+            AI-generated image.
+        </p>
+
+
+        <div class="post-form">
+
+            <div class="input-group">
+
+                <label for="platform">
+                    Social Media Platform
+                </label>
+
+                <select id="platform">
+
+                    <option value="LinkedIn">
+                        LinkedIn
+                    </option>
+
+                    <option value="Instagram">
+                        Instagram
+                    </option>
+
+                    <option value="Facebook">
+                        Facebook
+                    </option>
+
+                    <option value="Twitter/X">
+                        Twitter / X
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="generatePostBtn"
+            onclick="generatePost()">
+
+            <span id="generatePostButtonText">
+                Generate Post
+            </span>
+
+        </button>
+
+    </section>
+
+
+    <!-- POST LOADING -->
+
+    <div
+        id="postLoading"
+        class="loading hidden">
+
+        <div class="spinner"></div>
+
+        <p>
+            AI is creating your post and generating the image...
+        </p>
+
+    </div>
+
+
+    <!-- POST ERROR -->
+
+    <div
+        id="postError"
+        class="error hidden">
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- GENERATED POST -->
+    <!-- ========================= -->
+
+    <section
+        id="postResults"
+        class="post-results hidden">
+
+        <div class="post-result-header">
+
+            <div>
+
+                <p class="result-label">
+                    GENERATED POST
+                </p>
+
+                <h2 id="postPlatform"></h2>
+
+            </div>
+
+            <div class="badge">
+                READY TO PUBLISH
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE -->
+
+        <div class="generated-image-container">
+
+            <img
+                id="generatedImage"
+                src=""
+                alt="AI Generated Marketing Post"
+            >
+
+        </div>
+
+
+        <!-- POST CONTENT -->
+
+        <div class="post-content-card">
+
+            <h3>Post Content</h3>
+
+            <p id="postText"></p>
+
+        </div>
+
+
+        <!-- CAPTION -->
+
+        <div class="post-content-card">
+
+            <h3>Caption</h3>
+
+            <p id="postCaption"></p>
+
+        </div>
+
+
+        <!-- HASHTAGS -->
+
+        <div class="post-content-card">
+
+            <h3>Hashtags</h3>
+
+            <div
+                id="postHashtags"
+                class="hashtags">
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE CONCEPT -->
+
+        <div class="post-content-card">
+
+            <h3>Image Concept</h3>
+
+            <p id="imagePrompt"></p>
+
+        </div>
+
+
+        <!-- DOWNLOAD -->
+
+        <div class="post-actions">
+
+            <a
+                id="downloadImage"
+                class="download-btn"
+                href=""
+                download>
+
+                Download Image
+
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="/frontend/script.js"></script>
 
 </body>
+
 </html>
